@@ -1,0 +1,212 @@
+KLAUTOR CHANGELOG
+=================
+
+BETA
+2009-05-28
+* named package org.klautor.client
+* auto-generated JMUnit-Tests for later testing [removed]
+* TODO: Update documentation
+* TODO: Program a useful server (PHP?)
+
+2008-02-08
+* named package org.klautor
+
+-*- 0.9 build 31 -*-
+2008-02-08
+* released
+
+2008-02-07
+* [Browser] Bugfix - Befehle werden nun nicht mehr angezeigt, wenn die
+    Termine geloescht wurden
+
+2008-02-06
+* [MainMenu] "Browser" heisst nun erstmal "Liste"
+* [alle Klassen um den Browser] der Browser wird innerhalb des Bearbeitungs-
+    vorgangs nicht neu angelegt, die verschiedenen Klassen unterrichten das
+    MIDlet ueber Aenderungen -> Focus auf ein Element bleibt bestehen, Browser
+    braucht nicht jedes Mal neu angelegt zu werden.
+* [Browser] um update() und showData() ergaenzt - sinnvollere Struktur, macht
+    obiges moeglich
+
+2008-02-05
+* [PrefsMenu] Abbrechen-Befehl nun Typ BACK - benutzerfreundlicher
+
+2008-02-04
+* [1880280][TerminLoader][Database] added.
+                    - Database komplett ueberarbeitet, Version der Daten wird
+                        ueberprueft und Datum der Speicherung der Benutzerdaten
+                        wird nun gespeichert
+* Copyright-marks angepasst
+* [Termine] Bug in freeMem() behoben
+
+2008-01-31
+* [KlautorMIDlet][Editor][Deleter] Termine werden nun direkt nach dem 
+                    Auswaehlen/Bearbeiten gespeichert
+* [Database] Etwas intelligenter: Nur bei Aenderungen speichern
+* [1880281][AbstractLoadScreen] - refixed. Fehler wird nun im Screen angezeigt
+* [Editor] leeres Textfeld anzeigen, wenn Notiz "n/a"
+
+2008-01-29
+* [LoadedChooser][1881364] Bewertungs-Buttons nun Typ SCREEN - sollten besser 
+                            verfuegbar sein
+* [TerminLoader]    - Optimierung des Ladevorgangs
+                    - [1881399] (sehr einfache) Ueperpruefung auf Korrektheit
+                        der URL
+                    - [1880903] Abbrechen des Ladevorgangs sollte nun 
+                        funktionieren
+* [PrefsMenu][1881399] Eingaben werden nun getrimmt
+
+2008-01-28
+* [LoadManager] und [TerminListener] in [TerminLoader] integriert - ein Thread
+    gespart, Verhalten scheint das gleiche zu bleiben (mit den gleichen Bugs)
+
+2008-01-27
+* [SplashScreen] komplett entfernt, der SplashScreen wird jetzt von [Message] &
+    nur noch beim Start des Programms angezeigt
+* [1880297][LoadedChooser] geadded - nach dem Laden kann nun abgebrochen werden
+* [1880821][PrefsMenu] geadded - bei "leeren" Daten wird automatisch "http://"
+    eingetragen
+* verschiedene Aufraeumarbeiten, z.B. Verwendung von AlertTypes, Icons bei
+    Abfragen eingefuegt
+* [MainMenu] nicht gebrauchten "select"-Command entfernt
+
+2008-01-26
+* [1880281][AbstractLoadScreen] gefixed - Ueberpruefung eingefuegt
+    * sourceforge.net-Project angelegt, Name klautor
+    * Bugs und FeatureRequests muessen nun in Changelog und Doku mit der
+        entsprechenden ID und dem Modulnamen angegeben werden, also z.B. 
+        * [12345678][Browser] Bild eingefuegt
+
+
+-*- 0.9 build 1 -*-
+2008-01-21
+* NetBeans-Projekt mit Mobility-Support angelegt (die Mischung von midp, ant
+    und Eclipse war etwas umstaendlich - vielleicht kriegen die das irgendwann
+    noch hin).
+* [SplashScreen] macht Probleme mit dem Emulator - vorerst deaktiviert
+* zur besseren Kompatiblitaet Versionsangabe geaendert
+* released
+
+-*- 1.0b1 -*-
+2004-03-15
+* Version 1.0a3 ohne weitere Aenderungen als 1.0b1 uebernommen und
+    veroeffentlicht
+
+
+ALPHA
+
+-*- 1.0a3 -*-
+
+2004-03-09
+* Version: 1.0a3
+
+2004-03-06
+* Einige Command-Type-Aenderungen im [Brower] (SCREEN => ITEM)
+* Hinweis auf GNU GPL hinzugefuegt
+
+-*- 1.0a2 -*-
+
+2004-03-01
+* Icons ins Hauptmenue eingebaut
+* [Sorter]: Bug im Algorithmus beim Sortieren des Kurstyps
+    oberflaechlich behoben
+* Weitere Ueberpruefung auf OutOfMemoryError in [Sorter] eingebaut
+* Version: 1.0a2
+
+2004-02-27
+* In [AbstractLoadScreen] und [KlautorMIDlet] Reaktion auf Download-Fehler
+	implementiert
+
+-*- 1.0a1 -*-
+
+2004-02-26
+* [Termine], [Database] und [Message] um static freeMem() erweitert
+* in [KlautorMIDlet] pauseApp(), destroyApp() und freeAll() implementiert
+* Fehlerbehandlung fuer [Database]
+* [Browser] und [Deleter] um Funktion "Alle Loeschen" erweitert
+* Extra-GarbageCollection und Ueberpruefungen auf Speichermangel
+	eingefuegt
+* MIDlet auf diversen Emulatoren und Nokia 3510i getestet
+	- Behebung des Select-Bugs in [Browser] (mit Nokia konnte nicht
+		existentes Element ausgewaehlt werden
+	=> Version: 1. Alpha => 1.0a1
+
+PRE-ALPHA
+
+2004-02-25
+* Speichern-Bug in [Database] behoben (falsche Zeile war auskommentiert)
+* [UpdateScreen] und [LoadScreen] werden jetzt von [AbstractLoadScreen]
+	abgeleitet
+* [KlautorMIDlet]: Anpassung an Aenderung in anderen Klassen (s.o.)
+* Thread [ParserManager] implementiert
+* [Message] fuer neue Icons erweitert
+* [TerminListener] definiert
+* Thread [TerminLoader] implementiert
+
+2004-02-24
+* [Parser] parse(string, bool) in parseUpdates(string) umbenannt und
+	"Algorithmus" aus [UpdateScreen] uebernommen => effizienter
+* [Sorter] implementiert
+* [Termin] um getDatumLong() erweitert
+* [Termine] um terminAt(int) erweitert
+* [Message] erstellt und teilweise implementiert
+
+
+2004-02-23
+* [Editor] implementiert
+* [Deletor] implementiert
+* [Parser] um deparse() erweitert
+* [Database] implementiert
+* [LoadedChooser] verbessert
+* [LoadScreen] und [LoadNewMenu] zusammengefasst
+* Parser um parse(string, bool) mit Vektor-Return erweitert
+* [PrefsMenu] implementiert
+* [UpdateMenu] in [UpdateScreen] umbenannt und mit Aktualisierungs-
+	Funktion implementiert
+
+2004-02-22
+* [DateViewer] implementiert
+* [Browser] erweitert (s.o.)
+
+2004-02-20
+* Dokumentation der bisher implementierten Klassen:
+	- [KlautorMIDlet]
+	- [LoadedChooser]
+	- [LoadNewMenu]
+	- [LoadScreen]
+	- [MainMenu]
+	- [Parser]
+	- [PrefsMenu]
+	- [SplashScreen]
+	- [Termin]
+	- [Termine]
+	- [UpdateMenu]
+	(Anm.: [Browser]-Implementation noch nicht fertig gestellt)
+
+2004-02-18
+* Anlegen des Gesamtprojekts
+* Userinterface vom 11.2. implementiert und erweitert
+* Datei-Download implementiert
+* Parser-Algorithmus implementiert
+* [LoadedChooser] implementiert
+
+TODO:	* Fehlerbehandlung
+	* Optimieren des Parsers (wahrscheinlich zu hoher Speicherverbrauch)
+
+2004-02-11
+* Erste UserInterface-Teile fertiggestellt (zur spaeteren Implementierung)
+
+PRE-CONCEPT-STEPS
+
+2004-02-05
+* RMS-Datenspeicherung funktioniert (zur spaeteren Implementierung)
+
+2004-02-03
+* Parser-Algorithmus funktioniert (zur spaeteren Implementierung)
+
+2004-01-31
+* HTTP-Verbindung & Download einer Datei funktioniert (zur spaeteren   
+	Implementierung)
+
+________________________________________________________________________________
+(c) 2008 The Klautor Project - http://klautor.brakensiek.info
