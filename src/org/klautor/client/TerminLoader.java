@@ -196,20 +196,17 @@ public class TerminLoader
      * 			[Stand: 26.1.2004]
      */
     public void download() {
-        ContentConnection c = null;
-        InputStream is = null;
 
-        try {
+        String url = Database.getDatabase().getQuelldatei() + "/" + Database.getDatabase().getStufe();
+        if (!url.startsWith("http://") || url.equals("") || (url.indexOf(" ") != -1)) {
+            throw new IOException("Invalid URL");
+        }
+
+        // Verbindung vom Typ herstellen und in den Typ "ContentConnction" umwandeln.
+        // Einen InputString aus dieserVerbindung oeffnen
+        try(ContentConnection c = (ContentConnection) Connector.open(url); InputStream is = c.openInputStream()) {
             // URL - pruefen (momentan sehr simpel)
-            String url = Database.getDatabase().getQuelldatei() + "/" + Database.getDatabase().getStufe();
-            if (!url.startsWith("http://") || url.equals("") || (url.indexOf(" ") != -1)) {
-                throw new IOException("Invalid URL");
-            }
 
-            // Verbindung vom Typ herstellen und in den Typ "ContentConnction" umwandeln.
-            c = (ContentConnection) Connector.open(url);
-            // Einen InputString aus dieserVerbindung oeffnen
-            is = c.openInputStream();
             // Dateilaenge abfragen
             int len = (int) c.getLength();
             
@@ -262,20 +259,6 @@ public class TerminLoader
         catch (IOException e) {
             wasError = true;
         } // Zum Schluss alles schliessen.
-        finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                }
-            }
-            if (c != null) {
-                try {
-                    c.close();
-                } catch (IOException e) {
-                }
-            }
-        }
     }
 
     /**
